@@ -1,880 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhawana Basnet | Personal Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhawana Basnet | Personal Portfolio</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+:root{
+    --primary:#4A3267;
+    --secondary:#DE638A;
+    --accent:#F7B9C4;
+    --light:#F3D9E5;
+    --background:#C6BADE;
+    --text:#2D2142;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+*{
+    box-sizing:border-box;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            background-color: #f7f5f2;
-            color: #333;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        img,
-        video,
-        iframe,
-        embed,
-        object {
-            max-width: 100%;
-        }
+body{
+    margin:0;
+    font-family:"Times New Roman",Times,serif;
+    background:var(--background);
+    color:var(--text);
+    line-height:1.6;
+}
 
-        header {
-            background-color: #292343;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
+header{
+    background:var(--primary);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
 
-        header h1 {
-            margin-bottom: 10px;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-        }
+header h1{
+    margin:0;
+    font-size:42px;
+}
 
-        header p {
-            font-size: 1.1rem;
-        }
+header p{
+    margin-top:10px;
+    font-size:20px;
+}
 
-        main {
-            width: min(1100px, 92%);
-            margin: auto;
-        }
+main{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+}
 
-        section {
-            background-color: white;
-            margin: 30px 0;
-            padding: clamp(20px, 4vw, 40px);
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-        }
+section{
+    background:white;
+    margin:30px 0;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
 
-        section h2 {
-            color: #292343;
-            border-bottom: 2px solid #292343;
-            padding-bottom: 8px;
-        }
+section h2{
+    color:var(--primary);
+    border-bottom:3px solid var(--secondary);
+    padding-bottom:8px;
+}
 
-        .about-container {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
+.about,
+.goal,
+.education-card{
+    display:flex;
+    gap:25px;
+    align-items:center;
+    flex-wrap:wrap;
+}
 
-        .profile-photo {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #292343;
-        }
+.profile,
+.goal img{
+    width:230px;
+    height:230px;
+    object-fit:cover;
+}
 
-        .about-text {
-            flex: 1;
-            min-width: 0;
-        }
+.profile{
+    border-radius:50%;
+    border:5px solid var(--primary);
+}
 
-        .education-card {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-            margin: 25px 0;
-            padding: 20px;
-            background-color: #f7f5f2;
-            border-radius: 10px;
-        }
+.goal img{
+    border-radius:10px;
+}
 
-        .school-logo {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-        }
+.education-card{
+    background:var(--light);
+    padding:20px;
+    border-radius:10px;
+    margin:20px 0;
+}
 
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            padding: 0;
-            list-style: none;
-        }
+.education-card img{
+    width:90px;
+    height:90px;
+}
 
-        .skills-list li {
-            background-color: #292343;
-            color: white;
-            padding: 10px 16px;
-            border-radius: 20px;
-        }
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    list-style:none;
+    padding:0;
+}
 
-        .hobby-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
+.skills li{
+    background:var(--primary);
+    color:white;
+    padding:10px 15px;
+    border-radius:20px;
+}
 
-        .hobby-card {
-            background-color: #f7f5f2;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
+.hobbies{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
 
-        .anime-image {
-            width: 100%;
-            max-width: 300px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
+.card{
+    background:var(--light);
+    padding:18px;
+    border-radius:10px;
+    text-align:center;
+}
 
-        .media-box {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: #f7f5f2;
-            border-radius: 10px;
-        }
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+}
 
-        audio {
-            width: 100%;
-            max-width: 600px;
-        }
+.media{
+    background:var(--light);
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+}
 
-        video {
-            width: 100%;
-            max-width: 700px;
-            height: auto;
-            border-radius: 10px;
-        }
+audio,
+video,
+iframe{
+    width:100%;
+    margin-top:10px;
+}
 
-        .goal-container {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
+video{
+    border-radius:10px;
+}
 
-        .career-photo {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
 
-        .anime-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+th,
+td{
+    border:1px solid var(--primary);
+    padding:10px;
+}
 
-        .anime-table th,
-        .anime-table td {
-            border: 1px solid #999;
-            padding: 12px;
-            text-align: left;
-            overflow-wrap: break-word;
-        }
+th{
+    background:var(--primary);
+    color:white;
+}
 
-        .anime-table th {
-            background-color: #292343;
-            color: white;
-        }
+td{
+    background:var(--light);
+}
 
-        iframe {
-            width: 100%;
-            max-width: 700px;
-            height: 400px;
-            border: none;
-            border-radius: 10px;
-        }
+object,
+embed{
+    width:100%;
+    height:420px;
+    margin-top:15px;
+}
 
-        embed,
-        object {
-            width: 100%;
-            max-width: 700px;
-            height: 400px;
-            border: 1px solid #aaa;
-        }
+form{
+    max-width:700px;
+}
 
-        form {
-            max-width: 700px;
-        }
+label{
+    display:block;
+    margin-top:15px;
+    font-weight:bold;
+}
 
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+input,
+textarea,
+select,
+button{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    font-family:"Times New Roman",Times,serif;
+    border:1px solid var(--primary);
+    border-radius:5px;
+}
 
-        input,
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 1px solid #aaa;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
+button{
+    background:var(--secondary);
+    color:white;
+    cursor:pointer;
+}
 
-        textarea {
-            resize: vertical;
-        }
+button:hover{
+    background:var(--primary);
+}
 
-        button {
-            margin-top: 20px;
-            padding: 12px 25px;
-            background-color: #292343;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+footer{
+    background:var(--primary);
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
 
-        button:hover {
-            background-color: #17152b;
-        }
+@media(max-width:700px){
 
-        footer {
-            background-color: #292343;
-            color: white;
-            text-align: center;
-            padding: 25px 15px;
-            margin-top: 40px;
-        }
+.about,
+.goal,
+.education-card{
+    flex-direction:column;
+    text-align:center;
+}
 
-        @media (max-width: 700px) {
+.profile,
+.goal img{
+    width:180px;
+    height:180px;
+}
 
-            .about-container,
-            .goal-container,
-            .education-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-photo {
-                width: 190px;
-                height: 190px;
-            }
-
-            .career-photo {
-                width: 190px;
-                height: 190px;
-            }
-
-            .school-logo {
-                width: 80px;
-                height: 80px;
-            }
-
-            iframe {
-                height: 250px;
-            }
-
-            embed,
-            object {
-                height: 300px;
-            }
-
-            .anime-table {
-                font-size: 14px;
-            }
-
-            .anime-table th,
-            .anime-table td {
-                padding: 8px;
-            }
-        }
-    </style>
+iframe{
+    height:250px;
+}
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Bhawana Basnet's Portfolio</h1>
-        <p>A little introduction about me, my interests, hobbies, education, and future goals.</p>
-    </header>
-
-    <main>
-
-        <section id="about">
-
-            <h2>About Me</h2>
-
-            <div class="about-container">
-
-                <img src="Image/Bhawana.jpg"
-                    alt="Photo of Bhawana Basnet"
-                    width="300"
-                    height="300"
-                    class="profile-photo">
-
-                <div class="about-text">
+<header>
+<h1>Bhawana Basnet's Portfolio</h1>
+<p>A personal introduction about my education, skills, hobbies and future goals.</p>
+</header>
 
-                    <p>
-                        Hello! I’m <strong>Bhawana Basnet</strong>, a
-                        <em>16-year-old</em> Class 11 Section G student
-                        currently studying at <b>St. Xavier’s College</b>.
-                        My birthday is on <mark>June 10</mark>, which falls
-                        on Jestha 27 in the Nepali calendar.
-                    </p>
+<main>
 
-                    <p>
-                        I consider myself a <i>curious and creative</i>
-                        person who enjoys learning new things and exploring
-                        different interests. I especially enjoy activities
-                        that allow me to be creative while also helping me
-                        learn something useful.
-                    </p>
+<section id="about">
 
-                    <p>
-                        My personality often depends on my mood. When I am
-                        happy, I can be very <strong>extroverted and
-                        talkative</strong>, but when I am sad or upset,
-                        I usually become more quiet and introverted.
-                    </p>
+<h2>About Me</h2>
 
-                    <p>
-                        I sometimes struggle with anger, and I am trying
-                        to work on it and become better at managing my
-                        emotions. I also cry quite easily, whether I am
-                        sad, angry, or even laughing too hard.
-                    </p>
+<div class="about">
 
-                    <p>
-                        I believe that these emotions are a part of me,
-                        and I am still learning more about myself.
-                        I want to keep improving and become a
-                        <ins>better and more confident version of myself</ins>.
-                    </p>
+<img src="Image/Bhawana.jpg" alt="Photo of Bhawana Basnet" width="300" height="300" class="profile">
 
-                    <small>
-                        This portfolio is a small collection of my
-                        interests, experiences, and goals.
-                    </small>
+<div>
 
-                </div>
+<h3>Personal Introduction</h3>
 
-            </div>
+<p>Hello! I am <strong>Bhawana Basnet</strong>, a <em>16-year-old</em> Class 11 Section G student studying at <b>St. Xavier's College</b>. My birthday is on <mark>June 10</mark>, which falls on Jestha 27 in the Nepali calendar.</p>
 
-            <p>
-                In science, H<sub>2</sub>O represents water, while
-                10<sup>2</sup> represents one hundred.
-            </p>
+<h3>My Personality</h3>
 
-            <p>
-                I used to think that coding was
-                <del>too difficult for me</del>,
-                but learning HTML has made it more interesting.
-            </p>
-
-            <blockquote>
-                “Success is not about being perfect. It is about
-                continuing to learn and improve.”
-            </blockquote>
+<p>I consider myself a <i>curious and creative</i> person who enjoys learning new things. When I am happy, I become more talkative, while during difficult moments I become quieter.</p>
 
-        </section>
+<h3>Personal Growth</h3>
 
-
-        <section id="education">
-
-            <h2>My Education</h2>
-
-            <p>
-                Education has been an important part of my journey.
-                I completed my SEE from Reliance Public School before
-                joining St. Xavier’s College. I am currently studying
-                in Class 11 and exploring subjects that can help me
-                understand what I want to do in the future.
-            </p>
+<p>I am learning to manage my emotions and become a more <ins>confident version of myself</ins>. I once believed that coding was <del>too difficult</del>, but learning HTML has changed my perspective.</p>
 
-            <div class="education-card">
+<small>This portfolio is a collection of my interests, experiences and future goals.</small>
 
-                <img src="Image/Reliance Logo.png"
-                    alt="Reliance Public School Logo"
-                    width="100"
-                    height="100"
-                    class="school-logo">
+</div>
 
-                <div>
+</div>
 
-                    <h3>Reliance Public School</h3>
+<p>In science, H<sub>2</sub>O represents water, and 10<sup>2</sup> equals one hundred.</p>
 
-                    <p>
-                        I completed my SEE from Reliance Public School.
-                        My time there helped me build my academic
-                        foundation and prepared me for higher studies.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="education-card">
-
-                <img src="Image/St.Xaviers Logo.png"
-                    alt="St. Xavier's College Logo"
-                    width="100"
-                    height="100"
-                    class="school-logo">
-
-                <div>
-
-                    <h3>St. Xavier’s College</h3>
-
-                    <p>
-                        I am currently studying Class 11 Section G
-                        at St. Xavier’s College. My subjects include
-                        Physics, Chemistry, Mathematics, English,
-                        Nepali, and Computer Science.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <h3>My Favourite Subject: Mathematics</h3>
-
-            <p>
-                Mathematics is one of the subjects that interests me
-                the most. I enjoy solving equations and understanding
-                how mathematical ideas can be connected to real-life
-                situations. It can be frustrating when I cannot get
-                the correct answer, but I usually try again instead
-                of giving up. I refer to my books and notes or ask
-                my teachers for help when I get stuck.
-            </p>
-
-        </section>
-
-
-        <section id="skills">
-
-            <h2>My Skills</h2>
-
-            <p>
-                I am currently developing different academic,
-                technical, and personal skills. Some of the skills
-                I am working on include:
-            </p>
-
-            <ul class="skills-list">
-                <li>HTML & Web Development</li>
-                <li>Microsoft Word</li>
-                <li>Microsoft Excel</li>
-                <li>Communication</li>
-                <li>Teamwork</li>
-                <li>Creative Thinking</li>
-                <li>Problem Solving</li>
-                <li>Time Management</li>
-            </ul>
-
-            <h4>Things I Want to Improve</h4>
-
-            <ol>
-                <li>Managing my time better</li>
-                <li>Improving my communication</li>
-                <li>Becoming more confident</li>
-                <li>Developing better problem-solving skills</li>
-                <li>Learning more about technology</li>
-            </ol>
-
-        </section>
-
-
-        <section id="hobbies">
-
-            <h2>My Hobbies</h2>
-
-            <p>
-                When I am not studying, I like spending my free time
-                doing things that I genuinely enjoy. My hobbies help
-                me relax, explore my interests, and enjoy my time away
-                from academics.
-            </p>
-
-            <div class="hobby-grid">
-
-                <div class="hobby-card">
-
-                    <img src="Image/Anime Photo.jpg"
-                        alt="The Fragrant Of Flower Blooms With Dignity"
-                        width="300"
-                        height="250"
-                        class="anime-image">
-
-                    <h3>Watching Anime</h3>
-
-                    <p>
-                        Anime is one of my favourite hobbies. I enjoy
-                        its storytelling, characters, animation,
-                        emotional moments, and especially the music.
-                    </p>
-
-                </div>
-
-                <div class="hobby-card">
-
-                    <h3>Reading Manhwas</h3>
-
-                    <p>
-                        I enjoy reading manhwas because I like
-                        discovering different stories, art styles,
-                        characters, and fictional worlds.
-                    </p>
-
-                </div>
-
-                <div class="hobby-card">
-
-                    <h3>Listening to Music</h3>
-
-                    <p>
-                        I often listen to music when I am studying,
-                        travelling, relaxing, or simply spending
-                        time by myself.
-                    </p>
-
-                </div>
-
-                <div class="hobby-card">
-
-                    <h3>Exploring Technology</h3>
-
-                    <p>
-                        I enjoy exploring websites, applications,
-                        and digital tools because I find it interesting
-                        to understand how technology works.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <section id="anime">
-
-    <h2>My Favourite Anime</h2>
-
-    <h3>The Flowers Bloom with Dignity</h3>
-
-    <p>
-        One of my favourite anime is
-        <strong>The Flowers Bloom with Dignity</strong>.
-        I really like the characters and the way their
-        high-school lives are shown through friendship,
-        personal growth, and relationships.
-    </p>
-
-    <p>
-        What I enjoy most is how natural the relationships
-        between the characters feel. I like seeing them slowly
-        understand each other and develop closer bonds instead
-        of everything happening too quickly.
-    </p>
-
-    <h4>Why I Like It</h4>
-
-    <p>
-        I especially like the way the anime portrays
-        high-school life. The friendships, conversations,
-        small everyday moments, and emotions make the characters
-        feel more relatable. It makes me imagine having a
-        high-school experience filled with meaningful friendships
-        and memories like the ones shown in the story.
-    </p>
-
-    <h5>My Favourite Couple</h5>
-
-    <p>
-        I particularly enjoy the <strong>second couple</strong>
-        because I love their slow-burn romance. Their relationship
-        develops gradually, which makes their interactions more
-        interesting and satisfying to watch. I like how their
-        feelings grow naturally through small moments rather than
-        being rushed.
-    </p>
-
-    <h6>A Small Note</h6>
-
-    <p>
-        For me, the characters and the relationships are what make
-        this anime special. The combination of friendship,
-        high-school life, and slow-burn romance makes the story
-        especially enjoyable to me.
-    </p>
-
-    <h3>Anime Information</h3>
-
-    <table class="anime-table">
-
-        <tr>
-            <th>Anime</th>
-            <th>Genre</th>
-            <th>What I Like About It</th>
-        </tr>
-
-        <tr>
-            <td>The Flowers Bloom with Dignity</td>
-            <td>Romance, School, Slice of Life</td>
-            <td>
-                The characters, high-school life, friendships,
-                relationships, and especially the slow-burn
-                romance of the second couple.
-            </td>
-        </tr>
-
-    </table>
-
-    <div class="media-box">
-
-        <h3>Favourite Opening Song - Audio</h3>
-
-        <p>
-            One of my favourite parts of an anime is its
-            opening song. Here is the opening song I chose
-            for my portfolio.
-        </p>
-
-        <audio controls>
-             Audio Type mp3 :-
-            <source src="Audio and Video/Opening Audio.mp3"
-                type="audio/mpeg">
-
-            Your browser does not support the audio element.
-            Audio Type ogg :-
-            <source src="Audio and Video/Opening Audio.ogg" type="audio/ogg">
-
-        </audio>
-
-    </div>
-
-    <div class="media-box">
-
-        <h3>Favourite Opening - Video</h3>
-
-        <video controls
-            poster="Image/Anime Photo.jpg"
-            width="500">
-            Video Type mp4 :-
-
-            <source src="Audio and Video/Opening Video.mp4"
-                type="video/mp4">
-
-            Your browser does not support the video element.
-            Video Type webm :-
-
-            <source src="Audio and Video/Opening Video.webm" type="video/webm">
- 
-        </video>
-
-    </div>
-
-    <div class="media-box">
-
-        <h3>Anime Video - Iframe</h3>
-
-        <p>
-            This iframe demonstrates how external web content
-            can be included in an HTML webpage.
-        </p>
-
-        <iframe
-            src="https://www.youtube.com/watch?v=w54dAEtsQqQ&list=RDw54dAEtsQqQ&start_radio=1"
-            title="The Flowers Bloom with Dignity"
-            allowfullscreen>
-        </iframe>
-
-    </div>
+<blockquote>"Success is not about being perfect. It is about continuing to learn and improve."</blockquote>
 
 </section>
 
-        <section>
+<section id="education">
 
-            <h2>Document Embedding</h2>
+<h2>Education</h2>
 
-            <p>
-                The object element can be used to display an external
-                document such as a PDF inside a webpage.
-            </p>
+<p>Education has played an important role in my journey from school to college.</p>
 
-            <object
-                data="documents/my-document.pdf"
-                type="application/pdf">
+<div class="education-card">
 
-                <p>
-                    Your browser cannot display this PDF.
-                    Please open the PDF separately to view it.
-                </p>
+<img src="Image/Reliance Logo.png" alt="Reliance Public School Logo" width="100" height="100">
 
-            </object>
+<div>
 
-        </section>
+<h3>Reliance Public School</h3>
 
+<p>I completed my SEE at Reliance Public School, where I built my academic foundation.</p>
 
-        <section>
+</div>
 
-            <h2>Embedded Media</h2>
+</div>
 
-            <p>
-                The embed element can be used to include external
-                media or graphics in a webpage.
-            </p>
+<div class="education-card">
 
-            <embed
-                src="Image/Anime Photo.jpg"
-                type="image/jpeg"
-                width="500"
-                height="350">
+<img src="Image/St.Xaviers Logo.png" alt="St. Xavier's College Logo" width="100" height="100">
 
-        </section>
+<div>
 
+<h3>St. Xavier's College</h3>
 
-        <section id="goals">
+<p>I am currently studying Class 11 Section G with Physics, Chemistry, Mathematics, English, Nepali and Computer Science.</p>
 
-            <h2>My Future Goals</h2>
+</div>
 
-            <div class="goal-container">
+</div>
 
-                <img src="Image/CA.jpg"
-                    alt="Chartered Accountant career"
-                    width="250"
-                    height="250"
-                    class="career-photo">
+<h3>Favourite Subject</h3>
 
-                <div>
+<p>Mathematics is my favourite subject because I enjoy solving problems and understanding logical ideas.</p>
 
-                    <p>
-                        I have not completely decided what career I
-                        want to pursue yet, and I think it is okay to
-                        take some time to figure it out. Right now,
-                        I want to explore different fields and find
-                        something that suits my personality, abilities,
-                        and interests.
-                    </p>
+</section>
 
-                    <p>
-                        Becoming a
-                        <strong>Chartered Accountant</strong> has
-                        recently caught my interest, so I would like
-                        to learn more about the profession before
-                        making a final decision.
-                    </p>
+<section id="skills">
 
-                    <p>
-                        I want to become someone who is genuinely
-                        good at whatever field I eventually choose.
-                        I also want to become independent and capable
-                        of making my own decisions with confidence.
-                    </p>
+<h2>Skills</h2>
 
-                    <p>
-                        I know that success requires
-                        <em>patience, determination, discipline,
-                        and continuous effort</em>. Most importantly,
-                        I want to choose a career that I genuinely
-                        enjoy and feel proud of.
-                    </p>
+<p>I am currently developing both academic and personal skills.</p>
 
-                </div>
+<ul class="skills">
 
-            </div>
+<li>HTML</li>
+<li>Microsoft Word</li>
+<li>Microsoft Excel</li>
+<li>Communication</li>
+<li>Teamwork</li>
+<li>Creative Thinking</li>
+<li>Problem Solving</li>
+<li>Time Management</li>
 
-        </section>
+</ul>
 
+<h3>Skills I Want to Improve</h3>
 
-        <section id="contact">
+<ol>
 
-            <h2>Contact Me</h2>
+<li>Time Management</li>
+<li>Communication</li>
+<li>Confidence</li>
+<li>Problem Solving</li>
+<li>Technology Skills</li>
 
-            <p>
-                If you would like to share your favourite anime
-                or leave a message, you can use the form below.
-            </p>
+</ol>
 
-            <form>
+</section>
 
-                <label for="name">Full Name:</label>
+<section id="hobbies">
 
-                <input type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Enter your name"
-                    required>
+<h2>Hobbies</h2>
 
-                <label for="email">Email:</label>
+<div class="hobbies">
 
-                <input type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required>
+<div class="card">
 
-                <label for="anime-choice">
-                    What is your favourite anime?
-                </label>
+<img src="Image/Anime Photo.jpg" alt="Watching Anime" width="300" height="200">
 
-                <input type="text"
-                    id="anime-choice"
-                    name="anime-choice"
-                    placeholder="Enter your favourite anime">
+<h3>Watching Anime</h3>
 
-                <label for="genre">Favourite Anime Genre:</label>
+<p>I enjoy anime because of its storytelling, characters and music.</p>
 
-                <select id="genre" name="genre">
+</div>
 
-                    <option value="romance">Romance</option>
-                    <option value="action">Action</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="slice-of-life">Slice of Life</option>
-                    <option value="other">Other</option>
+<div class="card">
 
-                </select>
+<img src="Image/Manhwa.jpg" alt="Reading Manhwas" width="300" height="200">
 
-                <label for="message">Message:</label>
+<h3>Reading Manhwas</h3>
 
-                <textarea id="message"
-                    name="message"
-                    rows="5"
-                    placeholder="Write your message here..."></textarea>
+<p>I enjoy discovering different stories, characters and art styles.</p>
 
-                <button type="submit">Submit</button>
+</div>
 
-            </form>
+<div class="card">
 
-        </section>
+<img src="Image/Music.jpg" alt="Listening to Music" width="300" height="200">
 
-    </main>
+<h3>Listening to Music</h3>
 
-    <footer>
+<p>I enjoy listening to music while studying, travelling and relaxing.</p>
 
-        <p>
-            &copy; 2026 Bhawana Basnet | Class 11 Section G
-        </p>
+</div>
 
-        <p>
-            My Personal Portfolio & Favourite Anime
-        </p>
+<div class="card">
 
-    </footer>
+<img src="Image/Communication.jpg" alt="Communicating with Friends" width="300" height="200">
+
+<h3>Communicating</h3>
+
+<p>I enjoy talking with friends, sharing ideas and building meaningful relationships.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="anime">
+
+<h2>My Favourite Anime</h2>
+
+<h3>The Fragrant Flower Blooms with Dignity</h3>
+
+<p>One of my favourite anime is <strong>The Fragrant Flower Blooms with Dignity</strong>. I love its friendships, emotional moments and slow-burn romance.</p>
+
+<h3>Why I Like It</h3>
+
+<p>The relationships develop naturally, making the story feel realistic and enjoyable.</p>
+
+<h4>Favourite Couple</h4>
+
+<p>The second couple is my favourite because their relationship grows slowly through meaningful interactions.</p>
+
+<h5>A Small Note</h5>
+
+<p>The combination of friendship and personal growth makes this anime memorable.</p>
+
+<h6>Closing Thought</h6>
+
+<p>This anime inspires me to appreciate small everyday moments.</p>
+
+<table>
+
+<tr>
+<th>Anime</th>
+<th>Genre</th>
+<th>What I Like</th>
+</tr>
+
+<tr>
+<td>The Fragrant Flower Blooms with Dignity</td>
+<td>Romance, School, Slice of Life</td>
+<td>Friendship, slow-burn romance and emotional storytelling.</td>
+</tr>
+
+</table>
+
+<div class="media">
+
+<h3>Opening Song and Video (MP3 & MP4)</h3>
+
+<audio controls>
+
+<source src="Audio and Video/Opening Audio.mp3" type="audio/mpeg">
+
+Your browser does not support the audio element.
+
+</audio>
+
+<video controls poster="Image/Anime Photo.jpg" width="500">
+
+<source src="Audio and Video/Opening Video.mp4" type="video/mp4">
+
+Your browser does not support the video element.
+
+</video>
+
+</div>
+
+<div class="media">
+
+<h3>Alternative Formats (OGG & WebM)</h3>
+
+<audio controls>
+
+<source src="Audio and Video/Opening Audio.ogg" type="audio/ogg">
+
+Your browser does not support the audio element.
+
+</audio>
+
+<video controls poster="Image/Anime Photo.jpg" width="500">
+
+<source src="Audio and Video/Opening Video.webm" type="video/webm">
+
+Your browser does not support the video element.
+
+</video>
+
+</div>
+
+<div class="media">
+
+<h3>Anime Opening (Iframe)</h3>
+
+<iframe src="https://www.youtube.com/embed/w54dAEtsQqQ" title="Anime Opening" allowfullscreen></iframe>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Document Embedding</h2>
+
+<p>The <strong>object</strong> element is used to display a PDF document.</p>
+
+<object data="documents/my-document.pdf" type="application/pdf">
+
+<p>Your browser cannot display this PDF.</p>
+
+</object>
+
+</section>
+
+<section>
+
+<h2>Embedded Media</h2>
+
+<p>The <strong>embed</strong> element is used to display media directly on a webpage.</p>
+
+<embed src="Image/St.Xaviers Logo.png" type="image/png" width="350" height="350">
+
+</section>
+
+<section id="goals">
+
+<h2>Future Goals</h2>
+
+<div class="goal">
+
+<img src="Image/CA.jpg" alt="Chartered Accountant Career" width="250" height="250">
+
+<div>
+
+<h3>Career Goal</h3>
+
+<p>I am still exploring different career options, but becoming a <strong>Chartered Accountant</strong> has recently become one of my interests.</p>
+
+<h3>Personal Goal</h3>
+
+<p>I want to become independent, confident and successful through patience, discipline and continuous learning.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact Me</h2>
+
+<p>If you would like to share your favourite anime or leave a message, please fill out the form below.</p>
+
+<form>
+
+<label for="name">Full Name</label>
+<input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+<label for="anime-choice">Favourite Anime</label>
+<input type="text" id="anime-choice" name="anime-choice" placeholder="Enter your favourite anime">
+
+<label for="genre">Favourite Anime Genre</label>
+
+<select id="genre" name="genre">
+
+<option>Romance</option>
+<option>Action</option>
+<option>Comedy</option>
+<option>Fantasy</option>
+<option>Slice of Life</option>
+<option>Other</option>
+
+</select>
+
+<label for="message">Message</label>
+
+<textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>&copy; 2026 Bhawana Basnet | Class 11 Section G</p>
+
+<p>Personal Portfolio</p>
+
+</footer>
 
 </body>
-
 </html>
